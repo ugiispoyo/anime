@@ -4,6 +4,10 @@ export interface AnimeResponse {
   meta: PaginationMeta;
 }
 
+export interface AnimeDetailResponse {
+  data: Anime;
+}
+
 export interface Anime {
   id: string;
   type: string;

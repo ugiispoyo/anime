@@ -20,6 +20,18 @@ export const fetchAnimeList = async (page: number, limit = 10) => {
 };
 
 export const fetchAnimeDetail = async (id: string) => {
-  const res = await fetch(`${BASE_URL}/anime/${id}`);
-  return res.json();
+  const url = `${BASE_URL}/anime/${id}`;
+
+  /* if there have cache */
+  if (getFromCache(url)) {
+    return getFromCache(url);
+  }
+
+  const res = await fetch(url);
+
+  const result = res.json();
+
+  /* set to chache */
+  setToCache(url, result);
+  return result;
 };

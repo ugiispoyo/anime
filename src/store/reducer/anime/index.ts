@@ -37,6 +37,28 @@ const reducer = (
         ...listData,
       };
     }
+    case "SET_DETAIL_ANIME": {
+      const original = value?.data;
+      const { attributes } = original;
+
+      return {
+        ...state,
+        detail: {
+          id: original?.id,
+          titles: {
+            en: attributes?.titles?.en,
+            ja_jp: attributes?.titles?.en_jp,
+          },
+          averageRating: attributes?.averageRating,
+          description: attributes?.description,
+          posterImage: attributes?.posterImage?.original,
+          synopsis: attributes?.synopsis,
+          startDate: attributes?.startDate,
+          endDate: attributes?.endDate,
+          canonicalTitle: attributes?.canonicalTitle,
+        },
+      };
+    }
     default:
       return state;
   }

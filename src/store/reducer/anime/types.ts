@@ -1,5 +1,5 @@
-import type { T_ListDetail } from "@/store/state/anime/types";
-import type { AnimeResponse } from "@/types/anime";
+import type { T_Detail } from "@/store/state/anime/types";
+import type { AnimeDetailResponse, AnimeResponse } from "@/types/anime";
 
 export type T_ActionAnime =
   | {
@@ -12,6 +12,6 @@ export type T_ActionAnime =
     }
   | {
       type: "SET_DETAIL_ANIME";
-      value: T_ListDetail;
+      value: AnimeDetailResponse;
     };
 
