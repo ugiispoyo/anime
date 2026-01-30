@@ -52,6 +52,7 @@ const Anime = () => {
     const currentParams = new URLSearchParams(searchParams.toString());
     currentParams.set("page", page.toString());
     navigate(`${pathname}${cleanQueryString(currentParams?.toString())}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
