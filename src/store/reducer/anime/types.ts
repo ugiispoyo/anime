@@ -1,4 +1,3 @@
-import type { T_Detail } from "@/store/state/anime/types";
 import type { AnimeDetailResponse, AnimeResponse } from "@/types/anime";
 
 export type T_ActionAnime =
