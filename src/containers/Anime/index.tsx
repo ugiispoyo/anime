@@ -28,13 +28,6 @@ export const Grid = styled.div`
   }
 `;
 
-export const PageWrapper = styled.div`
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 16px;
-  width: 100%;
-`;
-
 const Anime = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -59,8 +52,7 @@ const Anime = () => {
   };
 
   return (
-    <PageWrapper>
-      <h2>Anime List</h2>
+    <>
       {is_loading_get_data ? (
         <Grid>
           <SkeletonCard />
@@ -86,7 +78,7 @@ const Anime = () => {
           )}
         </>
       )}
-    </PageWrapper>
+    </>
   );
 };
 
