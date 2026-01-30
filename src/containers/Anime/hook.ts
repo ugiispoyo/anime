@@ -1,14 +1,11 @@
-import { useEffect } from "react";
-
 import { fetchAnimeList } from "@/services/anime";
 import { dispatch } from "@/store";
 
-const useLogic = () => {
-  useEffect(() => {
-    getData();
-  }, []);
+import type { T_Logic } from "./type";
 
-  const getData = async () => {
+const useLogic = (): T_Logic => {
+
+  const getData = async (page = 1) => {
     dispatch({
       type: "SET_IS_LOADING_ACTION",
       value: {
@@ -16,9 +13,12 @@ const useLogic = () => {
       },
     });
     try {
-      const data = await fetchAnimeList(1, 10);
+      const data = await fetchAnimeList(page, 20);
 
-      console.log(data);
+      dispatch({
+        type: "SET_LIST_ANIME",
+        value: data,
+      });
       dispatch({
         type: "SET_IS_LOADING_ACTION",
         value: {
@@ -37,7 +37,9 @@ const useLogic = () => {
     }
   };
 
-  return {};
+  return {
+    getData,
+  };
 };
 
 export default useLogic;

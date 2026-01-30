@@ -1,4 +1,5 @@
-import type { T_List } from "@/store/state/anime/types";
+import type { T_ListDetail } from "@/store/state/anime/types";
+import type { AnimeResponse } from "@/types/anime";
 
 export type T_ActionAnime =
   | {
@@ -6,11 +7,11 @@ export type T_ActionAnime =
       value?: never;
     }
   | {
-      type: "SET_TO_DO";
-      value: T_List;
+      type: "SET_LIST_ANIME";
+      value: AnimeResponse;
     }
   | {
-      type: "SET_TO_DONE";
-      value: number;
+      type: "SET_DETAIL_ANIME";
+      value: T_ListDetail;
     };
 
