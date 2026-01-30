@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
+import Image from "@/components/LazyImage";
+
 import type { T_ListDetail } from "@/store/state/anime/types";
 
 const Card = styled.div`
@@ -9,10 +11,7 @@ const Card = styled.div`
   overflow: hidden;
   background: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-`;
-
-const Image = styled.img`
-  width: 100%;
+  min-height: 220px;
 `;
 
 const Content = styled.div`
@@ -24,7 +23,12 @@ export default function AnimeCard({ anime }: { anime: T_ListDetail }) {
 
   return (
     <Card onClick={() => navigate(`/anime/${anime.id}`)}>
-      <Image src={anime.attributes.posterImage.small} />
+      <Image
+        src={anime.attributes.posterImage.small}
+        alt={anime.attributes?.titles?.en}
+        heigthPlaceholder={350}
+        widthPlaceholder={350}
+      />
       <Content>
         <h4>{anime.attributes.titles.en || anime.attributes.canonicalTitle}</h4>
         <p>{anime.attributes.titles.ja_jp}</p>

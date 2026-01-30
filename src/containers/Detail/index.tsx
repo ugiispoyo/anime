@@ -7,6 +7,7 @@ import { SkeletonDetail } from "@/components/Skeleton";
 import useLogic from "./hook";
 
 import { useStore } from "@/store";
+import Image from "@/components/LazyImage";
 
 const Wrapper = styled.div`
   max-width: 1100px;
@@ -16,7 +17,7 @@ const Wrapper = styled.div`
 
 const TopSection = styled.div`
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 300px 1fr;
   gap: 24px;
 
   @media (max-width: 768px) {
@@ -24,10 +25,13 @@ const TopSection = styled.div`
   }
 `;
 
-const Poster = styled.img`
+const WrapPoster = styled.div`
   width: 100%;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  max-height: 350px;
+  overflow: hidden;
+  max-width: 300px;
 `;
 
 const Title = styled.h1`
@@ -89,7 +93,7 @@ export default function Detail() {
   useEffect(() => {
     if (!id) return;
     getDetail(id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   if (is_loading_get_detail) {
@@ -105,7 +109,14 @@ export default function Detail() {
   return (
     <Wrapper>
       <TopSection>
-        <Poster src={detail.posterImage} />
+        <WrapPoster>
+          <Image
+            src={detail.posterImage}
+            alt={detail.titles?.en}
+            heigthPlaceholder={350}
+            widthPlaceholder={300}
+          />
+        </WrapPoster>
 
         <div>
           <Title>{detail.titles.en || detail.canonicalTitle}</Title>

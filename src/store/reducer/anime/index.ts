@@ -51,7 +51,7 @@ const reducer = (
           },
           averageRating: attributes?.averageRating,
           description: attributes?.description,
-          posterImage: attributes?.posterImage?.original,
+          posterImage: attributes?.posterImage?.medium,
           synopsis: attributes?.synopsis,
           startDate: attributes?.startDate,
           endDate: attributes?.endDate,

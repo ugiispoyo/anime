@@ -17,13 +17,16 @@ export const Grid = styled.div`
   /* Large screens */
   grid-template-columns: repeat(4, 1fr);
 
-  /* Medium (tablet) */
   @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
   /* Small (mobile) */
-  @media (max-width: 600px) {
+  @media (max-width: 550px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -55,6 +58,8 @@ const Anime = () => {
     <>
       {is_loading_get_data ? (
         <Grid>
+          <SkeletonCard />
+          <SkeletonCard />
           <SkeletonCard />
           <SkeletonCard />
         </Grid>

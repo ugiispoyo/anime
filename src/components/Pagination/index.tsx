@@ -28,7 +28,7 @@ type Props = {
 };
 
 export default function Pagination({ page, totalPage, onChange }: Props) {
-  const maxVisible = 5;
+  const maxVisible = 4;
 
   const start = Math.max(1, page - Math.floor(maxVisible / 2));
   const end = Math.min(totalPage, start + maxVisible - 1);
